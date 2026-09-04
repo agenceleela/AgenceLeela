@@ -7,7 +7,7 @@ const fronts = [
   {
     icon: Search,
     title: 'Front Google',
-    subtitle: 'La Capture Intentionnelle',
+    subtitle: ' Être trouvé quand on vous cherche',
     features: [
       { icon: Globe, text: 'Site web optimisé pour la conversion (pas juste pour être "joli").' },
       { icon: FileText, text: '30 articles SEO / mois pour dominer votre niche locale.' },
@@ -19,7 +19,7 @@ const fronts = [
   {
     icon: Video,
     title: 'Front Réseaux Sociaux',
-    subtitle: 'La Capture d\'Attention',
+    subtitle: ' Être vu quand on ne vous cherche pas',
     features: [
       { icon: Video, text: '30 vidéos verticales (Shorts/Reels/TikTok) / mois, scriptées et montées.' },
       { icon: MessageSquare, text: 'Système de capture par mot-clé en commentaire (DM instantané).' },
