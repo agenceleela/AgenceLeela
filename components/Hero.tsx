@@ -17,18 +17,26 @@ export default function Hero() {
         >
           {/* Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-leela-dark-blue leading-tight tracking-tight mb-6">
-            Votre collaborateur marketing{' '}
+            Nous remplissons votre agenda de prospects qualifiés.{' '}
             <span className="bg-gradient-to-r from-leela-dark-blue to-leela-slate bg-clip-text text-transparent">
-              tout-en-un
+              Sans que vous ayez à créer le moindre contenu.
             </span>
-            .
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-leela-slate mb-10 max-w-3xl leading-relaxed">
-            Vous gérez votre métier, nous inondons votre entreprise de prospects qualifiés.
-            Domination Google et Réseaux Sociaux automatisée. De la création de contenu à la prise de rendez-vous, sans effort de votre part.
+            Le Système Leela déploie une machine de guerre marketing (SEO + Réseaux Sociaux + Automatisation WhatsApp) pour votre TPE/PME.
           </p>
+
+          {/* Offer Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center bg-orange-100 text-orange-900 px-4 py-2 rounded-full text-sm font-semibold mb-6"
+          >
+            🔥 Offre Pilote Fondateur : Obtenez votre plan de contenu personnalisé dès votre premier appel.
+          </motion.div>
 
           {/* CTA Button */}
           <motion.a
@@ -42,7 +50,7 @@ export default function Hero() {
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center bg-leela-dark-blue text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-leela-slate transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            Obtenir mon audit gratuit
+            👉 Réserver mon Audit Gratuit & Voir mon Contenu Pré-généré
             <svg 
               className="ml-2 w-5 h-5" 
               fill="none" 
@@ -57,6 +65,11 @@ export default function Hero() {
               />
             </svg>
           </motion.a>
+
+          {/* CTA Subtext */}
+          <p className="mt-4 text-leela-slate text-sm">
+            Sans engagement. 15 minutes. 100% gratuit.
+          </p>
         </motion.div>
 
         {/* Scroll indicator */}

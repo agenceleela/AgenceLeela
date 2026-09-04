@@ -1,45 +1,32 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Search, Video, Calendar, MessageSquare } from 'lucide-react'
+import { Search, Video, Globe, FileText, MessageSquare, Calendar } from 'lucide-react'
 
 const fronts = [
   {
     icon: Search,
     title: 'Front Google',
-    subtitle: 'Être trouvé quand on vous cherche',
+    subtitle: 'La Capture Intentionnelle',
     features: [
-      'Site de conversion qui booke des RDV',
-      '30 articles SEO / mois',
-      'Refonte Google Business Profile',
-      "Module de génération d'avis",
+      { icon: Globe, text: 'Site web optimisé pour la conversion (pas juste pour être "joli").' },
+      { icon: FileText, text: '30 articles SEO / mois pour dominer votre niche locale.' },
+      { icon: Search, text: 'Refonte et optimisation complète de votre Google Business Profile.' },
+      { icon: MessageSquare, text: 'Système automatisé de génération d\'avis clients.' },
     ],
     color: 'from-blue-500 to-cyan-400',
   },
   {
     icon: Video,
-    title: 'Front Réseaux',
-    subtitle: 'Être vu quand on ne vous cherche pas',
+    title: 'Front Réseaux Sociaux',
+    subtitle: 'La Capture d\'Attention',
     features: [
-      '30 vidéos verticales / mois',
-      'Capture par mot-clé en commentaire',
-      'Lead magnet livré sur WhatsApp',
-      'Landing page dédiée',
+      { icon: Video, text: '30 vidéos verticales (Shorts/Reels/TikTok) / mois, scriptées et montées.' },
+      { icon: MessageSquare, text: 'Système de capture par mot-clé en commentaire (DM instantané).' },
+      { icon: Calendar, text: 'Guide pratique exclusif livré automatiquement sur WhatsApp.' },
+      { icon: Globe, text: 'Landing page dédiée pour transformer les curieux en rendez-vous.' },
     ],
     color: 'from-purple-500 to-pink-400',
-  },
-]
-
-const paths = [
-  {
-    icon: Calendar,
-    title: 'Chemin Google',
-    description: 'Il cherche → vous trouve → booke un appel ou demande une info sur le site.',
-  },
-  {
-    icon: MessageSquare,
-    title: 'Chemin Réseaux',
-    description: 'Il regarde → commente un mot-clé → reçoit le lien en DM → landing → WhatsApp → RDV.',
   },
 ]
 
@@ -55,15 +42,15 @@ export default function BentoGrid() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Le Système Leela
+            Arrêtez d'acheter du "marketing".<br />Installez un Système d'Acquisition.
           </h2>
-          <p className="text-xl text-leela-slate-light max-w-2xl mx-auto">
-            Deux fronts de déploiement. Deux chemins vers le rendez-vous.
+          <p className="text-xl text-leela-slate-light max-w-3xl mx-auto">
+            Nous ne sommes pas une agence classique. Nous sommes votre département marketing externalisé, propulsé par un système propriétaire d'automatisation de pointe. Nous agissons sur deux fronts pour capturer vos clients, qu'ils vous cherchent ou non.
           </p>
         </motion.div>
 
         {/* Fronts de déploiement */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 gap-6">
           {fronts.map((front, index) => (
             <motion.div
               key={front.title}
@@ -88,11 +75,11 @@ export default function BentoGrid() {
               </p>
 
               {/* Features list */}
-              <ul className="space-y-3">
-                {front.features.map((feature) => (
-                  <li key={feature} className="flex items-start">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/60 mt-2 mr-3 flex-shrink-0" />
-                    <span className="text-leela-slate-light">{feature}</span>
+              <ul className="space-y-4">
+                {front.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <feature.icon className="w-5 h-5 text-white/60 flex-shrink-0 mt-1" />
+                    <span className="text-leela-slate-light">{feature.text}</span>
                   </li>
                 ))}
               </ul>
@@ -102,44 +89,6 @@ export default function BentoGrid() {
             </motion.div>
           ))}
         </div>
-
-        {/* Chemins vers le RDV */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-16"
-        >
-          <h3 className="text-3xl font-bold text-white text-center mb-10">
-            Le rendez-vous, par deux chemins
-          </h3>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {paths.map((path, index) => (
-              <motion.div
-                key={path.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm border border-leela-border rounded-3xl p-6 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
-                    <path.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-white">
-                    {path.title}
-                  </h4>
-                </div>
-                <p className="text-leela-slate-light leading-relaxed">
-                  {path.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

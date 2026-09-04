@@ -2,12 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-
-// NOTE DEV: Transition dynamique liée au scroll (comportement type mercury) :
-// le fond passe de #F5F7FA à #0A0F1C proportionnellement à la progression du scroll,
-// et les textes s'éclaircissent en synchrone pour garantir le contraste à tout instant.
-// Offset ["start end", "center center"] : la section est pleinement sombre dès qu'elle
-// est centrée à l'écran, assurant la continuité avec BentoGrid (fond bleu nuit).
+import { XCircle } from 'lucide-react'
 
 export default function Problem() {
   const ref = useRef<HTMLElement>(null)
@@ -17,11 +12,16 @@ export default function Problem() {
     offset: ['start end', 'center center'],
   })
 
-  // NOTE DEV: valeur de départ alignée sur le fond de fin de SocialProof (#F5F7FA)
   const backgroundColor = useTransform(scrollYProgress, [0, 1], ['#F5F7FA', '#0A0F1C'])
   const headingColor = useTransform(scrollYProgress, [0.15, 0.6], ['#0A0F1C', '#FFFFFF'])
   const textColor = useTransform(scrollYProgress, [0.15, 0.6], ['#334155', '#94A3B8'])
   const emphasisColor = useTransform(scrollYProgress, [0.15, 0.6], ['#0A0F1C', '#FFFFFF'])
+
+  const problems = [
+    'Votre entreprise est invisible sur Google.',
+    'Vos réseaux sociaux sont muets (ou vous les gérez dans l\'urgence).',
+    'Les agences traditionnelles vous promettent la lune et vous facturent des milliers d\'euros pour des "rapports" inutiles.',
+  ]
 
   return (
     <motion.section ref={ref} style={{ backgroundColor }} className="py-24">
@@ -31,30 +31,46 @@ export default function Problem() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl"
+          className="max-w-4xl"
         >
           <motion.h2
             style={{ color: headingColor }}
             className="text-4xl md:text-5xl font-bold mb-8 leading-tight"
           >
-            Vous passez vos journées à gérer votre métier, mais personne ne vous trouve.
+            Vous êtes excellent dans votre métier. Mais votre marketing vous coûte du temps, de l'argent et des cheveux blancs.
           </motion.h2>
 
-          <div className="space-y-6 text-lg leading-relaxed">
+          <div className="space-y-6 text-lg leading-relaxed mb-8">
             <motion.p style={{ color: textColor }}>
-              Vous êtes excellent dans ce que vous faites. Mais entre les appels clients,
-              la gestion de votre équipe et les opérations quotidiennes, qui a le temps
-              de s'occuper du marketing ?
+              Entre la gestion de vos équipes, vos opérations quotidiennes et vos clients actuels, qui a le temps de poster sur les réseaux ou d'écrire des articles de blog ?
             </motion.p>
-            <motion.p style={{ color: textColor }}>
-              Résultat : votre visibilité est invisible sur Google. Vos réseaux sociaux
-              sont muets. Et quand un lead arrive, il est souvent mal qualifié ou trop
-              tardif.
-            </motion.p>
-            <motion.p style={{ color: emphasisColor }} className="font-semibold">
-              Le problème n'est pas votre offre. C'est qu'elle reste dans l'ombre.
+            <motion.p style={{ color: textColor }} className="font-semibold">
+              Le résultat est toujours le même :
             </motion.p>
           </div>
+
+          {/* Problems list */}
+          <div className="space-y-4 mb-8">
+            {problems.map((problem, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex items-start gap-3"
+              >
+                <XCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                <motion.p style={{ color: textColor }} className="text-lg">
+                  {problem}
+                </motion.p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p style={{ color: emphasisColor }} className="text-lg font-semibold mt-8">
+            Le problème n'est pas votre offre. C'est qu'elle reste dans l'ombre. Il est temps de changer la donne.
+          </motion.p>
         </motion.div>
       </div>
     </motion.section>

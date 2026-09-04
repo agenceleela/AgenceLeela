@@ -1,26 +1,26 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Rocket, Zap, CalendarCheck } from 'lucide-react'
+import { Video, Rocket, CalendarCheck } from 'lucide-react'
 
 const steps = [
   {
     number: '01',
-    icon: Rocket,
-    title: 'On déploie votre Système Leela',
-    description: 'Google et Réseaux Sociaux. Deux fronts de déploiement qui travaillent pour vous 24h/24.',
+    icon: Video,
+    title: 'Appel de Découverte & Révélation',
+    description: 'Nous discutons de vos objectifs pendant 15 min. Nous vous montrons votre contenu pré-généré en direct.',
   },
   {
     number: '02',
-    icon: Zap,
-    title: 'Le contenu convertit en continu',
-    description: 'Chaque article SEO et chaque vidéo verticale capturent des contacts qualifiés automatiquement.',
+    icon: Rocket,
+    title: 'Déploiement Éclair',
+    description: 'Vous validez, et nous activons le Système Leela sur tous vos canaux en moins de 7 jours.',
   },
   {
     number: '03',
     icon: CalendarCheck,
-    title: 'Votre agenda se remplit',
-    description: "Les prospects bookent des appels ou demandent des infos. Vous n'avez plus qu'à honorer les RDV.",
+    title: 'Votre Agenda se Remplit',
+    description: 'Le système travaille 24h/24. Les prospects commentent, cliquent, et bookent des appels. Vous n\'avez plus qu\'à les fermer.',
   },
 ]
 
@@ -39,7 +39,7 @@ export default function HowItWorks() {
             Comment ça marche
           </h2>
           <p className="text-xl text-leela-slate-light max-w-2xl mx-auto">
-            De la visibilité au rendez-vous booké, en trois étapes.
+            De la découverte au déploiement, en trois étapes.
           </p>
         </motion.div>
 

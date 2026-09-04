@@ -17,11 +17,11 @@ export default function FinalCTA() {
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-            Votre marketing, géré. Votre agenda, rempli.
+            Ne laissez pas vos concurrents prendre vos prospects.
           </h2>
 
           <p className="text-xl text-leela-slate-light mb-10 max-w-2xl mx-auto">
-            Voyons ce que le Système Leela donnerait pour votre entreprise.
+            Les 3 places pour l'Offre Pilote Fondateur partent vite. Réservez votre appel maintenant et repartez avec un plan d'action concret, même si vous ne signez pas avec nous.
           </p>
 
           <motion.a
@@ -36,7 +36,7 @@ export default function FinalCTA() {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center bg-white text-leela-dark-blue px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-leela-light-gray transition-all duration-300 shadow-xl hover:shadow-2xl"
           >
-            Réserver un appel de 15 min
+            👉 Réserver mon Appel de 15 min & Voir mon Contenu Pré-généré
             <svg 
               className="ml-2 w-5 h-5" 
               fill="none" 
