@@ -17,9 +17,9 @@ export default function Hero() {
         >
           {/* Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-leela-dark-blue leading-tight tracking-tight mb-6">
-            Nous remplissons votre agenda de prospects qualifiés.{' '}
+            On remplit{' '}
             <span className="bg-gradient-to-r from-leela-dark-blue to-leela-slate bg-clip-text text-transparent">
-              Sans que vous ayez à créer le moindre contenu.
+              votre agenda.
             </span>
           </h1>
 
