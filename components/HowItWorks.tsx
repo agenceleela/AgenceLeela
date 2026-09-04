@@ -1,22 +1,26 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Rocket, Zap, CalendarCheck } from 'lucide-react'
 
 const steps = [
   {
     number: '01',
-    title: 'On définit votre offre irrésistible',
-    description: "Analyse de votre marché, identification de votre avatar client et création d'une offre qui convertit.",
+    icon: Rocket,
+    title: 'On déploie votre Système Leela',
+    description: 'Google et Réseaux Sociaux. Deux fronts de déploiement qui travaillent pour vous 24h/24.',
   },
   {
     number: '02',
-    title: 'On déploie le contenu massivement',
-    description: '31 articles SEO + 31 vidéos sociales par mois. Votre marque devient omniprésente.',
+    icon: Zap,
+    title: 'Le contenu convertit en continu',
+    description: 'Chaque article SEO et chaque vidéo verticale capturent des contacts qualifiés automatiquement.',
   },
   {
     number: '03',
-    title: 'Vous recevez les RDV dans votre agenda',
-    description: 'Les prospects qualifiés prennent rendez-vous automatiquement via Cal.com. Zero effort.',
+    icon: CalendarCheck,
+    title: 'Votre agenda se remplit',
+    description: 'Les prospects bookent des appels ou demandent des infos. Vous n'avez plus qu'à honorer les RDV.',
   },
 ]
 
@@ -35,7 +39,7 @@ export default function HowItWorks() {
             Comment ça marche
           </h2>
           <p className="text-xl text-leela-slate-light max-w-2xl mx-auto">
-            Trois étapes simples pour transformer votre visibilité.
+            De la visibilité au rendez-vous booké, en trois étapes.
           </p>
         </motion.div>
 
@@ -52,6 +56,11 @@ export default function HowItWorks() {
               {/* Step number */}
               <div className="text-6xl font-bold text-white/10 mb-4">
                 {step.number}
+              </div>
+
+              {/* Icon */}
+              <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                <step.icon className="w-7 h-7 text-white" />
               </div>
 
               {/* Title */}
