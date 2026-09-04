@@ -12,7 +12,7 @@ const fronts = [
       'Site de conversion qui booke des RDV',
       '30 articles SEO / mois',
       'Refonte Google Business Profile',
-      'Module de génération d'avis',
+      "Module de génération d'avis",
     ],
     color: 'from-blue-500 to-cyan-400',
   },

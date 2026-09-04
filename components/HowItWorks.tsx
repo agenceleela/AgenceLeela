@@ -20,7 +20,7 @@ const steps = [
     number: '03',
     icon: CalendarCheck,
     title: 'Votre agenda se remplit',
-    description: 'Les prospects bookent des appels ou demandent des infos. Vous n'avez plus qu'à honorer les RDV.',
+    description: "Les prospects bookent des appels ou demandent des infos. Vous n'avez plus qu'à honorer les RDV.",
   },
 ]
 
