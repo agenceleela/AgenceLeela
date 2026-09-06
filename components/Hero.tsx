@@ -24,13 +24,10 @@ export default function Hero() {
           </h1>
 
           {/* Subheadline */}
-          {/* NOTE DEV: 3 lignes imposées (spans block) ; parenthèse en gris atténué et taille réduite */}
+          {/* NOTE DEV: 2 lignes (spans block) ; parenthèse en gris atténué et taille réduite */}
           <p className="text-xl md:text-2xl text-leela-slate mb-10 max-w-3xl leading-relaxed">
             <span className="block">
-              Le Système Leela déploie une infrastructure marketing complète
-            </span>
-            <span className="block">
-              de la création de contenu{' '}
+              De la création de contenu{' '}
               <span className="text-leela-slate/60 text-lg md:text-xl">
                 (SEO + Réseaux Sociaux)
               </span>{' '}
