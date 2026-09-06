@@ -4,6 +4,9 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { XCircle } from 'lucide-react'
 
+// NOTE DEV: départ en #FFFFFF (au lieu de #F5F7FA) depuis la mise en silence de
+// SocialProof, pour assurer la continuité visuelle avec le Hero (fond blanc).
+
 export default function Problem() {
   const ref = useRef<HTMLElement>(null)
 
@@ -12,7 +15,7 @@ export default function Problem() {
     offset: ['start end', 'center center'],
   })
 
-  const backgroundColor = useTransform(scrollYProgress, [0, 1], ['#F5F7FA', '#0A0F1C'])
+  const backgroundColor = useTransform(scrollYProgress, [0, 1], ['#FFFFFF', '#0A0F1C'])
   const headingColor = useTransform(scrollYProgress, [0.15, 0.6], ['#0A0F1C', '#FFFFFF'])
   const textColor = useTransform(scrollYProgress, [0.15, 0.6], ['#334155', '#94A3B8'])
   const emphasisColor = useTransform(scrollYProgress, [0.15, 0.6], ['#0A0F1C', '#FFFFFF'])
