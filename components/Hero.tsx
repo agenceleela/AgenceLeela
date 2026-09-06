@@ -24,8 +24,19 @@ export default function Hero() {
           </h1>
 
           {/* Subheadline */}
+          {/* NOTE DEV: 3 lignes imposées (spans block) ; parenthèse en gris atténué et taille réduite */}
           <p className="text-xl md:text-2xl text-leela-slate mb-10 max-w-3xl leading-relaxed">
-            Le Système Leela déploie une machine de guerre marketing (SEO + Réseaux Sociaux + Automatisation WhatsApp) pour votre TPE/PME.
+            <span className="block">
+              Le Système Leela déploie une infrastructure marketing complète
+            </span>
+            <span className="block">
+              de la création de contenu{' '}
+              <span className="text-leela-slate/60 text-lg md:text-xl">
+                (SEO + Réseaux Sociaux)
+              </span>{' '}
+              jusqu'à la prise de RDV
+            </span>
+            <span className="block">pour votre TPE/PME.</span>
           </p>
 
           {/* Offer Badge */}
