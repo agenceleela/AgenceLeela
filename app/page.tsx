@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import ThemeTransition from '../components/ThemeTransition'
-import Objections from '../components/Objections'
+import FAQ from '../components/FAQ'
 import SocialProof from '../components/SocialProof'
 import LeadForm from '../components/LeadForm'
 import Footer from '../components/Footer'
@@ -12,7 +12,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ThemeTransition />
-      <Objections />
+      <FAQ />
       <SocialProof />
       <LeadForm />
       <Footer />
