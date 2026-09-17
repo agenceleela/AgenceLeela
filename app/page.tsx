@@ -1,8 +1,8 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
-import FAQ from '../components/FAQ'
 import SocialProof from '../components/SocialProof'
 import LeadForm from '../components/LeadForm'
+import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 
 export default function Home() {
@@ -10,9 +10,9 @@ export default function Home() {
     <main className="min-h-screen bg-leela-white font-sans text-leela-dark-blue antialiased">
       <Navbar />
       <Hero />
-      <FAQ />
       <SocialProof />
       <LeadForm />
+      <FAQ />
       <Footer />
     </main>
   )
