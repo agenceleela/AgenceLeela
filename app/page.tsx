@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import SocialProof from '../components/SocialProof'
-import FounderSlots from '../components/FounderSlots'
+import Testimonials from '../components/Testimonials'
 import LeadForm from '../components/LeadForm'
 import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
@@ -12,7 +12,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <SocialProof />
-      <FounderSlots />
+      <Testimonials />
       <LeadForm />
       <FAQ />
       <Footer />
