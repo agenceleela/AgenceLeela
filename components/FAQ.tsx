@@ -1,9 +1,12 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
-// NOTE DEV: FAQ classique en accordéon. Utilise <details>/<summary> HTML5 natifs
-// (accessibilité clavier + SEO sans JS). Pas d'icônes, juste une flèche SVG pivotante.
+// NOTE DEV: transition dynamique clair → sombre scroll-liée (pattern validé sur
+// l'ancienne section Problem) : le fond ET les textes changent de couleur en
+// fonction du scroll. Jonctions sans couture : #FFFFFF au départ (= fond Hero),
+// #0A0F1C à l'arrivée (= fond des sections suivantes).
 const faqs = [
   {
     question: "Je ne veux pas d'abonnement long",
@@ -20,8 +23,19 @@ const faqs = [
 ]
 
 export default function FAQ() {
+  const ref = useRef<HTMLElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'center center'],
+  })
+
+  const backgroundColor = useTransform(scrollYProgress, [0, 1], ['#FFFFFF', '#0A0F1C'])
+  const headingColor = useTransform(scrollYProgress, [0.2, 0.6], ['#0A0F1C', '#FFFFFF'])
+  const subColor = useTransform(scrollYProgress, [0.2, 0.6], ['#334155', '#94A3B8'])
+
   return (
-    <section className="bg-leela-dark-blue py-24">
+    <motion.section ref={ref} style={{ backgroundColor }} className="py-24">
       <div className="mx-auto max-w-3xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -30,10 +44,15 @@ export default function FAQ() {
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">Questions fréquentes</h2>
-          <p className="mx-auto max-w-2xl text-xl text-leela-slate-light">
+          <motion.h2
+            style={{ color: headingColor }}
+            className="mb-6 text-3xl font-bold md:text-4xl"
+          >
+            Questions fréquentes
+          </motion.h2>
+          <motion.p style={{ color: subColor }} className="mx-auto max-w-2xl text-xl">
             Trois réponses franches aux trois questions qu'on nous pose le plus.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="space-y-4">
@@ -62,6 +81,6 @@ export default function FAQ() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
