@@ -4,8 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
 // NOTE DEV: section porte la transition dynamique clair → sombre (scroll-liée),
-// car elle est désormais la première section sombre après le Hero (FAQ déplacée
-// après le formulaire). Jonctions sans couture : #FFFFFF au départ (= fond Hero),
+// car elle est la première section sombre après le Hero.
+// Jonctions sans couture : #FFFFFF au départ (= fond Hero),
 // #0A0F1C à l'arrivée (= fond des sections suivantes).
 // Preuves chiffrées, pas de faux logos/témoignages (risque légal de publicité
 // trompeuse). Remplacer par de vrais témoignages dès la 1ère étude de cas validée.
