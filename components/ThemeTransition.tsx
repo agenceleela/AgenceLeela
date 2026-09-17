@@ -1,20 +1,13 @@
-'use client'
-
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
-
-// NOTE DEV: zone vide volontaire (respiration visuelle) qui porte la transition
-// clair → sombre au scroll. Range [0, 0.7] : le fond est pleinement sombre
-// avant que la section Objections n'entre dans le viewport.
+// NOTE DEV: transition clair → sombre via dégradé CSS statique.
+// L'ancienne version scroll-linked peignait une couleur plate uniforme
+// (bande grise avec coutures visibles). Ici le dégradé est continu :
+// aucune couture avec le Hero au-dessus ni avec la section sombre en dessous.
+// Le scroll traverse le dégradé = assombrissement progressif perçu.
 export default function ThemeTransition() {
-  const ref = useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  })
-
-  const backgroundColor = useTransform(scrollYProgress, [0, 0.7], ['#FFFFFF', '#0A0F1C'])
-
-  return <motion.div ref={ref} aria-hidden="true" style={{ backgroundColor }} className="h-[30vh] md:h-[40vh]" />
+  return (
+    <div
+      aria-hidden="true"
+      className="h-[40vh] bg-gradient-to-b from-leela-white to-leela-dark-blue md:h-[50vh]"
+    />
+  )
 }
