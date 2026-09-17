@@ -1,7 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Play, Search } from 'lucide-react'
+import {
+  Bookmark,
+  Heart,
+  Home,
+  MessageCircle,
+  Play,
+  Plus,
+  Search,
+  Send,
+} from 'lucide-react'
 
 // NOTE DEV: mockups 100% CSS/SVG (aucune image lourde) pour un chargement rapide (exigence tuto).
 export default function VisualProof() {
@@ -58,22 +67,75 @@ export default function VisualProof() {
           </div>
         </motion.div>
 
-        {/* Mockup vidéo verticale */}
+        {/* Mockup téléphone : interface Instagram iOS */}
         <motion.div
           variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.7 }}
-          className="absolute bottom-0 left-6 w-28 -rotate-3 rounded-[1.5rem] border border-slate-700 bg-leela-dark-blue p-2 shadow-2xl md:w-32"
+          className="absolute bottom-0 left-4 w-32 -rotate-3 rounded-[1.75rem] border border-slate-700 bg-leela-dark-blue p-1.5 shadow-2xl md:w-36"
         >
-          <div className="flex h-44 flex-col items-center justify-center gap-3 rounded-[1.25rem] bg-gradient-to-b from-leela-slate to-leela-dark-blue md:h-48">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-              <Play className="h-4 w-4 text-white" />
-            </span>
-            <span className="rounded-full bg-orange-400 px-2 py-0.5 text-[9px] font-bold text-white">
-              Commentez « INFO »
-            </span>
-            <div className="w-16 space-y-1">
-              <div className="h-1.5 rounded-full bg-white/30" />
-              <div className="mx-auto h-1.5 w-2/3 rounded-full bg-white/30" />
+          <div className="flex h-56 flex-col overflow-hidden rounded-[1.4rem] bg-white md:h-60">
+            {/* Barre de statut iOS */}
+            <div className="flex items-center justify-between px-2.5 pt-1.5">
+              <span className="text-[6px] font-semibold text-slate-900">9:32</span>
+              <div className="flex items-center gap-0.5">
+                <span className="h-1 w-1 rounded-full bg-slate-900" />
+                <span className="h-1 w-1.5 rounded-full bg-slate-900" />
+                <span className="h-1 w-2.5 rounded-sm bg-slate-900" />
+              </div>
+            </div>
+
+            {/* Header Instagram */}
+            <div className="flex items-center justify-between px-2.5 py-1">
+              <span className="h-2.5 w-2.5 rounded border border-slate-900" />
+              <span className="text-[8px] font-semibold italic text-slate-900">Instagram</span>
+              <Send className="h-2.5 w-2.5 text-slate-900" />
+            </div>
+
+            {/* Stories */}
+            <div className="flex gap-1 px-2.5 pb-1.5">
+              {[0, 1, 2, 3].map((i) => (
+                <span key={i} className="rounded-full bg-gradient-to-br from-pink-500 to-orange-400 p-[1.5px]">
+                  <span className="block h-3.5 w-3.5 rounded-full bg-slate-200" />
+                </span>
+              ))}
+            </div>
+
+            {/* Header du post */}
+            <div className="flex items-center gap-1 px-2.5 py-1">
+              <span className="h-3 w-3 rounded-full bg-gradient-to-br from-pink-400 to-orange-400" />
+              <span className="h-1.5 w-12 rounded-full bg-slate-300" />
+            </div>
+
+            {/* Média : vidéo verticale + badge CTA (remplace la photo du post) */}
+            <div className="flex flex-1 flex-col items-center justify-center gap-1.5 bg-gradient-to-b from-leela-slate to-leela-dark-blue">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
+                <Play className="h-3 w-3 text-white" />
+              </span>
+              <span className="rounded-full bg-orange-400 px-2 py-0.5 text-[6px] font-bold text-white">
+                Commentez « INFO »
+              </span>
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-1.5 px-2.5 py-1">
+              <Heart className="h-2.5 w-2.5 text-slate-900" />
+              <MessageCircle className="h-2.5 w-2.5 text-slate-900" />
+              <Send className="h-2.5 w-2.5 text-slate-900" />
+              <Bookmark className="ml-auto h-2.5 w-2.5 text-slate-900" />
+            </div>
+            <p className="px-2.5 text-[6px] font-semibold text-slate-900">1 254 j'aime</p>
+            <div className="space-y-0.5 px-2.5 py-1">
+              <div className="h-1 w-full rounded-full bg-slate-200" />
+              <div className="h-1 w-2/3 rounded-full bg-slate-200" />
+            </div>
+
+            {/* Barre de navigation */}
+            <div className="mt-auto flex items-center justify-between border-t border-slate-100 px-2.5 py-1">
+              <Home className="h-2.5 w-2.5 text-slate-900" />
+              <Search className="h-2.5 w-2.5 text-slate-900" />
+              <Plus className="h-2.5 w-2.5 text-slate-900" />
+              <Heart className="h-2.5 w-2.5 text-slate-900" />
+              <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
             </div>
           </div>
         </motion.div>
