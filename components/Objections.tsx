@@ -7,19 +7,19 @@ import { Clock, Euro, Zap } from 'lucide-react'
 const objections = [
   {
     icon: Clock,
-    question: 'Je ne veux pas d'abonnement long',
-    answer: 'Sans engagement après 4 mois. Arrêtez quand vous voulez, sans frais.',
+    question: "Je ne veux pas d'abonnement long",
+    answer: "Sans engagement après 4 mois. Arrêtez quand vous voulez, sans frais.",
     color: 'from-blue-500 to-cyan-400',
   },
   {
     icon: Euro,
     question: 'Ça va me coûter une fortune',
-    answer: '150€/mois tout inclus. Pas de frais cachés, pas de surprises.',
+    answer: "150€/mois tout inclus. Pas de frais cachés, pas de surprises.",
     color: 'from-green-500 to-emerald-400',
   },
   {
     icon: Zap,
-    question: 'Je n'ai pas le temps de gérer ça',
+    question: 'Je n\'ai pas le temps de gérer ça',
     answer: 'Zéro effort de votre part. On gère tout : contenu, publication, capture de leads.',
     color: 'from-orange-400 to-red-500',
   },
