@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 
 // NOTE DEV: mockups 100% CSS/SVG (aucune image lourde) pour un chargement rapide (exigence tuto).
+// Micro-copy réel cadré "exemple" (pas de lorem ipsum, pas de barres grises, pas de contenu trompeur).
 export default function VisualProof() {
   return (
     <motion.div
@@ -33,17 +34,40 @@ export default function VisualProof() {
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
             <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
             <span className="ml-3 flex-1 rounded-full bg-slate-100 px-3 py-1 text-[10px] text-slate-400">
-              votre-entreprise.fr
+              exemple-votre-entreprise.fr
             </span>
           </div>
-          <div className="space-y-3 p-5">
-            <div className="h-3 w-3/4 rounded-full bg-slate-200" />
-            <div className="h-3 w-1/2 rounded-full bg-slate-200" />
-            <div className="h-8 w-32 rounded-xl bg-leela-dark-blue" />
-            <div className="grid grid-cols-3 gap-2 pt-2">
-              <div className="h-12 rounded-lg bg-slate-100" />
-              <div className="h-12 rounded-lg bg-slate-100" />
-              <div className="h-12 rounded-lg bg-slate-100" />
+          <div className="space-y-2.5 p-5">
+            <span className="inline-flex rounded-full bg-orange-100 px-2 py-0.5 text-[8px] font-bold uppercase tracking-wide text-orange-700">
+              Exemple de site généré
+            </span>
+            <p className="text-[13px] font-bold leading-tight text-slate-900">
+              Votre entreprise, visible et crédible en ligne.
+            </p>
+            <p className="text-[9px] leading-snug text-slate-500">
+              Site de conversion créé par le Système Leela : présentation, preuves et prise de RDV.
+            </p>
+            <div className="flex items-center gap-2 pt-1">
+              <span className="rounded-lg bg-leela-dark-blue px-3 py-1.5 text-[9px] font-semibold text-white">
+                Demander un devis
+              </span>
+              <span className="rounded-lg border border-slate-200 px-3 py-1.5 text-[9px] font-semibold text-slate-600">
+                Voir nos réalisations
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-2 pt-1.5">
+              <div className="rounded-lg bg-slate-100 p-2">
+                <p className="text-[8px] font-semibold text-slate-700">Vos services</p>
+                <p className="mt-0.5 text-[7px] text-slate-500">présentés clairement</p>
+              </div>
+              <div className="rounded-lg bg-slate-100 p-2">
+                <p className="text-[8px] font-semibold text-slate-700">Vos avis clients</p>
+                <p className="mt-0.5 text-[7px] text-slate-500">collectés automatiquement</p>
+              </div>
+              <div className="rounded-lg bg-slate-100 p-2">
+                <p className="text-[8px] font-semibold text-slate-700">Prise de RDV</p>
+                <p className="mt-0.5 text-[7px] text-slate-500">agenda intégré 24h/24</p>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -60,11 +84,13 @@ export default function VisualProof() {
             </span>
             <Search className="h-3 w-3 text-blue-500" />
           </div>
-          <div className="mt-3 space-y-2">
-            <div className="h-2.5 w-full rounded-full bg-slate-200" />
-            <div className="h-2.5 w-5/6 rounded-full bg-slate-200" />
-            <div className="h-2.5 w-4/6 rounded-full bg-slate-200" />
-          </div>
+          <p className="mt-2.5 text-[11px] font-bold leading-snug text-slate-900">
+            Exemple : combien coûte un électricien à Lyon ?
+          </p>
+          <p className="mt-1.5 text-[8px] leading-snug text-slate-500">
+            Réponse courte : 40 € à 70 € de l'heure. Le détail des tarifs 2026, ville par ville, dans cet article type de 800 mots.
+          </p>
+          <p className="mt-2 text-[8px] font-semibold text-blue-600">Lire l'article →</p>
         </motion.div>
 
         {/* Mockup téléphone : interface Instagram iOS */}
