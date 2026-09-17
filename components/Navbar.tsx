@@ -1,19 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
-// NOTE DEV: Remplacer par ton vrai lien Cal.com
-const CAL_COM_LINK = 'https://cal.com/TON-LIEN'
-
+// NOTE DEV: liens d'ancrage supprimés (sections correspondantes supprimées).
+// Une seule action possible : réserver (tuto landing page).
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -23,98 +22,61 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-leela-dark-blue/95 backdrop-blur-md border-b border-leela-border py-4'
-          : 'bg-transparent py-6'
+      transition={{ duration: 0.6 }}
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/90 py-2 shadow-lg backdrop-blur-md' : 'bg-transparent py-4'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        {/* NOTE DEV: texte blanc au scroll pour rester lisible sur fond sombre */}
-        <a
-          href="#"
-          className={`text-2xl font-bold transition-colors duration-300 ${
-            isScrolled
-              ? 'text-white hover:text-leela-slate-light'
-              : 'text-leela-dark-blue hover:text-leela-slate'
-          }`}
-        >
-          Agence Leela
-        </a>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {/* NOTE DEV: lien blanc au scroll pour rester lisible sur fond sombre */}
-          <a
-            href="#fonctionnement"
-            className={`transition-colors duration-200 ${
-              isScrolled
-                ? 'text-leela-slate-light hover:text-white'
-                : 'text-leela-slate hover:text-leela-dark-blue'
-            }`}
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex items-center justify-between">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-2xl font-bold"
           >
-            Fonctionnement
-          </a>
-          {/* NOTE DEV: CTA inversé (fond blanc) au scroll, sinon bleu nuit sur bleu nuit = aucun contraste */}
+            <span className="bg-gradient-to-r from-leela-dark-blue to-leela-slate bg-clip-text text-transparent">
+              AgenceLeela
+            </span>
+          </motion.div>
+
           <motion.a
-            href={CAL_COM_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#formulaire"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-6 py-3 rounded-2xl font-medium transition-colors duration-200 ${
-              isScrolled
-                ? 'bg-white text-leela-dark-blue hover:bg-leela-light-gray'
-                : 'bg-leela-dark-blue text-white hover:bg-leela-slate'
-            }`}
+            className="hidden rounded-full bg-leela-dark-blue px-6 py-2 font-semibold text-white transition-colors hover:bg-leela-slate md:block"
           >
-            Réserver un appel
+            Réserver
           </motion.a>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 text-leela-dark-blue md:hidden"
+            aria-label="Ouvrir le menu"
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        {/* NOTE DEV: icône blanche au scroll, sinon invisible sur fond sombre */}
-        <button
-          className={`md:hidden transition-colors duration-300 ${
-            isScrolled ? 'text-white' : 'text-leela-dark-blue'
-          }`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="mt-4 pb-4 md:hidden"
+          >
+            <a
+              href="#formulaire"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block rounded-full bg-leela-dark-blue px-6 py-3 text-center font-semibold text-white"
+            >
+              Réserver
+            </a>
+          </motion.div>
+        )}
       </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-leela-dark-blue/95 backdrop-blur-md border-b border-leela-border"
-        >
-          <div className="px-6 py-4 flex flex-col gap-4">
-            <a
-              href="#fonctionnement"
-              className="text-leela-slate-light hover:text-white transition-colors duration-200"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Fonctionnement
-            </a>
-            <a
-              href={CAL_COM_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-leela-dark-blue px-6 py-3 rounded-2xl font-medium text-center hover:bg-leela-light-gray transition-colors duration-200"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Réserver un appel
-            </a>
-          </div>
-        </motion.div>
-      )}
     </motion.nav>
   )
 }

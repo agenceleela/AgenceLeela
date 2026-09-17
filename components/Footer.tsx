@@ -1,41 +1,33 @@
+// NOTE DEV: liens légaux en placeholder (#) — créer les pages Mentions légales / CGV /
+// Politique de confidentialité avant toute campagne payante (exigence tuto).
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
-
   return (
-    <footer className="py-12 bg-leela-dark-blue border-t border-leela-border">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Logo */}
-          <a href="#" className="text-xl font-bold text-white hover:text-leela-slate-light transition-colors duration-200">
-            Agence Leela
-          </a>
+    <footer className="border-t border-leela-border bg-leela-dark-blue py-12 text-white">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col items-center gap-6 text-center">
+          <div className="text-2xl font-bold">
+            <span className="bg-gradient-to-r from-white to-leela-slate-light bg-clip-text text-transparent">
+              AgenceLeela
+            </span>
+          </div>
 
-          {/* Legal links */}
-          <div className="flex items-center gap-6">
-            <a 
-              href="#" 
-              className="text-leela-slate-light hover:text-white transition-colors duration-200 text-sm"
-            >
+          <p className="text-leela-slate-light">Votre collaborateur marketing tout-en-un.</p>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+            <a href="#" className="text-leela-slate-light transition-colors hover:text-white">
               Mentions légales
             </a>
-            <a 
-              href="#" 
-              className="text-leela-slate-light hover:text-white transition-colors duration-200 text-sm"
-            >
-              Politique de confidentialité
-            </a>
-            <a 
-              href="#" 
-              className="text-leela-slate-light hover:text-white transition-colors duration-200 text-sm"
-            >
+            <a href="#" className="text-leela-slate-light transition-colors hover:text-white">
               CGV
+            </a>
+            <a href="#" className="text-leela-slate-light transition-colors hover:text-white">
+              Politique de confidentialité
             </a>
           </div>
 
-          {/* Copyright */}
-          <p className="text-leela-slate-light text-sm">
-            © {currentYear} Agence Leela. Tous droits réservés.
-          </p>
+          <div className="border-t border-leela-border pt-6 text-sm text-leela-slate-light/60">
+            © {new Date().getFullYear()} Agence Leela. Tous droits réservés.
+          </div>
         </div>
       </div>
     </footer>
