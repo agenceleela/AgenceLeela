@@ -43,7 +43,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center bg-orange-100 text-orange-900 px-4 py-2 rounded-full text-sm font-semibold mb-6"
           >
-            🔥 Offre Pilote Fondateur : Obtenez votre plan de contenu personnalisé dès votre premier appel.
+            🔥 Offre Rentrée : découvrez en direct, dès le 1er appel, le site web qu'on a déjà construit pour vous.
           </motion.div>
 
           {/* CTA Button */}
