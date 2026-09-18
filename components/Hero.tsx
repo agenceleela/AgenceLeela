@@ -5,7 +5,7 @@ import VisualProof from './VisualProof'
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen flex-col justify-center bg-leela-white pb-6 pt-24">
+    <section className="flex min-h-screen flex-col justify-center bg-leela-white pb-4 pt-24">
       <div className="mx-auto w-full max-w-7xl px-6 text-center">
         {/* Headline */}
         <motion.h1
@@ -45,13 +45,55 @@ export default function Hero() {
           🔥 Offre Rentrée : découvrez en direct, dès le 1er appel, le site web qu'on a déjà construit pour vous.
         </motion.div>
 
-        {/* Preuve visuelle assemblée, sous les textes */}
-        {/* NOTE DEV: wrapper à hauteur compensée + scale CSS : l'assemblage des mockups
-            reste strictement identique, seule l'échelle change pour tenir above the fold. */}
-        <div className="mx-auto mt-6 h-[266px] w-full max-w-3xl md:mt-8 md:h-[320px]">
-          <div className="origin-top scale-[0.7] md:scale-[0.76]">
-            <VisualProof />
-          </div>
+        {/* Cadre vitrine des mockups */}
+        {/* NOTE DEV: effets d'ouverture (entrée spring + anneau lumineux + balayage)
+            appliqués au cadre uniquement ; les mockups gardent leur stagger interne. */}
+        <div className="mx-auto mt-4 w-full max-w-3xl md:mt-6">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 48,
+              scale: 0.94,
+              boxShadow: '0 0 0 0 rgba(59, 130, 246, 0.35)',
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              boxShadow: '0 0 0 28px rgba(59, 130, 246, 0)',
+            }}
+            transition={{
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.15,
+              boxShadow: { duration: 1.2, delay: 0.45, ease: 'easeOut' },
+            }}
+            className="relative overflow-hidden rounded-3xl border border-leela-border bg-leela-dark-blue p-3 shadow-2xl md:p-4"
+          >
+            {/* Halo décoratif */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-24 left-1/2 h-48 w-3/4 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent"
+            />
+            {/* Balayage lumineux à l'ouverture (une fois, sur le cadre uniquement) */}
+            <motion.div
+              aria-hidden="true"
+              initial={{ x: '-160%', opacity: 0.8 }}
+              animate={{ x: '320%', opacity: 0 }}
+              transition={{ duration: 1.6, delay: 0.6, ease: 'easeInOut' }}
+              className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+            />
+            {/* Wrapper à hauteur compensée + scale CSS : assemblage mockups identique */}
+            <div className="relative h-[240px] w-full md:h-[300px]">
+              <div className="origin-top scale-[0.63] md:scale-[0.71]">
+                <VisualProof />
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* CTA sous la preuve */}
