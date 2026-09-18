@@ -18,8 +18,6 @@ import {
 // car elle est la première section sombre après le Hero.
 // Plages resserrées ([0, 0.45] fond / [0.1, 0.4] textes) : la section est plus haute
 // (cartes de valeur), le fond doit être sombre dès l'entrée des cartes.
-// NOTE DEV: cartes de valeur reprises de l'ancien BentoGrid (preuve de valeur demandée),
-// 3e carte construite autour de la ligne conservée "24h/24 capture de RDV automatisée".
 const fronts = [
   {
     icon: Search,
@@ -27,7 +25,7 @@ const fronts = [
     subtitle: 'Être trouvé quand on vous cherche',
     features: [
       { icon: Globe, text: 'Site web optimisé pour la conversion (pas juste pour être "joli").' },
-      { icon: FileText, text: '30 articles SEO / mois pour dominer votre niche locale.' },
+      { icon: FileText, text: '30 articles SEO / mois pour dominer votre niche locale.', bold: true },
       { icon: Search, text: 'Refonte et optimisation complète de votre Google Business Profile.' },
       { icon: MessageSquare, text: "Système automatisé de génération d'avis clients." },
     ],
@@ -38,7 +36,7 @@ const fronts = [
     title: 'Front Réseaux Sociaux',
     subtitle: 'Être vu quand on ne vous cherche pas',
     features: [
-      { icon: Video, text: '30 vidéos verticales (Shorts/Reels/TikTok) / mois, scriptées et montées.' },
+      { icon: Video, text: '30 vidéos verticales (Shorts/Reels/TikTok) / mois, scriptées et montées.', bold: true },
       { icon: MessageSquare, text: 'Système de capture par mot-clé en commentaire (DM instantané).' },
       { icon: Calendar, text: 'Guide pratique exclusif livré automatiquement sur WhatsApp.' },
       { icon: Globe, text: 'Landing page dédiée pour transformer les curieux en rendez-vous.' },
@@ -48,7 +46,7 @@ const fronts = [
 ]
 
 const rdvFeatures = [
-  { icon: Calendar, text: 'Prise de RDV automatisée via Cal.com.' },
+  { icon: Calendar, text: 'Prise de RDV automatisée.' },
   { icon: MessageCircle, text: 'Lead magnet livré instantanément sur WhatsApp.' },
   { icon: Zap, text: 'Votre agenda se remplit pendant que vous travaillez.' },
 ]
@@ -100,14 +98,18 @@ export default function SocialProof() {
                 {front.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <feature.icon className="mt-1 h-5 w-5 flex-shrink-0 text-white/60" />
-                    <span className="text-leela-slate-light">{feature.text}</span>
+                    <span
+                      className={feature.bold ? 'font-semibold text-white' : 'text-leela-slate-light'}
+                    >
+                      {feature.text}
+                    </span>
                   </li>
                 ))}
               </ul>
             </motion.div>
           ))}
 
-          {/* Carte 3 : capture de RDV (ligne conservée) */}
+          {/* Carte 3 : capture de RDV */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
