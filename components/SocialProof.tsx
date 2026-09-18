@@ -2,51 +2,40 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import {
-  Calendar,
-  CalendarCheck,
-  FileText,
-  Globe,
-  MessageCircle,
-  MessageSquare,
-  Search,
-  Video,
-  Zap,
-} from 'lucide-react'
+import { CalendarCheck, Check, Search, Video } from 'lucide-react'
 
 // NOTE DEV: section porte la transition dynamique clair → sombre (scroll-liée),
 // car elle est la première section sombre après le Hero.
-// Plages resserrées ([0, 0.45] fond / [0.1, 0.4] textes) : le fond doit être sombre
-// dès l'entrée des cartes.
-// NOTE DEV: bullets réduits à l'essentiel (razor tuto : couper tout ce qui ne
-// convertit pas) ; la carte 3 porte la promesse de résultat (RDV).
-const fronts = [
+// Pattern "1 chiffre, 1 promesse, 2 preuves" : même squelette sur les 3 cartes,
+// valeur lisible en 1 seconde (stat géante), preuves alignées en bas (mt-auto).
+const cards = [
   {
     icon: Search,
-    title: 'Front Google',
-    subtitle: 'Être trouvé quand on vous cherche',
-    features: [
-      { icon: Globe, text: 'Site web optimisé pour la conversion (pas juste pour être "joli").' },
-      { icon: FileText, text: '30 articles SEO / mois pour dominer votre niche locale.', bold: true },
-    ],
     color: 'from-blue-500 to-cyan-400',
+    title: 'Front Google',
+    stat: '30',
+    unit: 'articles SEO / mois',
+    promise: 'Être trouvé quand on vous cherche.',
+    proofs: ['Site web optimisé pour la conversion.', 'Niche locale dominée, article après article.'],
   },
   {
     icon: Video,
-    title: 'Front Réseaux Sociaux',
-    subtitle: 'Être vu quand on ne vous cherche pas',
-    features: [
-      { icon: Video, text: '30 vidéos verticales (Shorts/Reels/TikTok) / mois, scriptées et montées.', bold: true },
-      { icon: MessageSquare, text: 'Système de capture par mot-clé en commentaire (DM instantané).' },
-    ],
     color: 'from-purple-500 to-pink-400',
+    title: 'Front Réseaux Sociaux',
+    stat: '30',
+    unit: 'vidéos verticales / mois',
+    promise: 'Être vu quand on ne vous cherche pas.',
+    proofs: ['Scriptées et montées pour vous.', 'Capture par mot-clé en commentaire.'],
   },
-]
-
-const rdvFeatures = [
-  { icon: Calendar, text: 'Prise de RDV automatisée.' },
-  { icon: MessageCircle, text: 'Lead magnet livré instantanément sur WhatsApp.' },
-  { icon: Zap, text: 'Votre agenda se remplit pendant que vous travaillez.' },
+  {
+    icon: CalendarCheck,
+    color: 'from-green-500 to-emerald-400',
+    title: 'Capture de RDV',
+    stat: '24h/24',
+    unit: 'capture de RDV automatisée',
+    promise: 'Votre agenda se remplit pendant que vous travaillez.',
+    proofs: ['Prise de RDV automatisée.', 'Lead magnet livré sur WhatsApp.'],
+  },
 ]
 
 export default function SocialProof() {
@@ -75,67 +64,44 @@ export default function SocialProof() {
         </motion.p>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {fronts.map((front, index) => (
+          {cards.map((card, index) => (
             <motion.div
-              key={front.title}
+              key={card.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               whileHover={{ y: -8 }}
-              className="group relative rounded-3xl border border-leela-border bg-white/5 p-8 backdrop-blur-sm transition-colors duration-300 hover:bg-white/10"
+              className="group flex flex-col rounded-3xl border border-leela-border bg-white/5 p-8 backdrop-blur-sm transition-colors duration-300 hover:bg-white/10"
             >
+              {/* Icône du front */}
               <div
-                className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${front.color} group-hover:scale-110 transition-transform duration-300`}
+                className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${card.color} group-hover:scale-110 transition-transform duration-300`}
               >
-                <front.icon className="h-7 w-7 text-white" />
+                <card.icon className="h-7 w-7 text-white" />
               </div>
-              <h3 className="mb-2 text-2xl font-bold text-white">{front.title}</h3>
-              <p className="mb-6 text-sm italic text-leela-slate-light">{front.subtitle}</p>
-              <ul className="space-y-4">
-                {front.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <feature.icon className="mt-1 h-5 w-5 flex-shrink-0 text-white/60" />
-                    <span
-                      className={feature.bold ? 'font-semibold text-white' : 'text-leela-slate-light'}
-                    >
-                      {feature.text}
-                    </span>
+
+              {/* Titre */}
+              <h3 className="mb-6 text-2xl font-bold text-white">{card.title}</h3>
+
+              {/* Stat géante + unité */}
+              <p className="text-5xl font-bold text-white">{card.stat}</p>
+              <p className="mt-1 text-sm text-leela-slate-light">{card.unit}</p>
+
+              {/* Promesse */}
+              <p className="mb-6 mt-5 text-leela-slate-light">{card.promise}</p>
+
+              {/* Séparateur + 2 preuves (alignées en bas de carte) */}
+              <ul className="mt-auto space-y-3 border-t border-leela-border pt-6">
+                {card.proofs.map((proof) => (
+                  <li key={proof} className="flex items-start gap-2.5">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                    <span className="text-sm text-leela-slate-light">{proof}</span>
                   </li>
                 ))}
               </ul>
             </motion.div>
           ))}
-
-          {/* Carte 3 : capture de RDV */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            whileHover={{ y: -8 }}
-            className="group relative rounded-3xl border border-leela-border bg-white/5 p-8 backdrop-blur-sm transition-colors duration-300 hover:bg-white/10"
-          >
-            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 group-hover:scale-110 transition-transform duration-300">
-              <CalendarCheck className="h-7 w-7 text-white" />
-            </div>
-            <h3 className="mb-2 text-2xl font-bold text-white">Capture de RDV</h3>
-            <p className="mb-6 text-sm italic text-leela-slate-light">
-              Transformer l'attention en agenda
-            </p>
-            <div className="mb-6">
-              <p className="text-4xl font-bold text-white">24h/24</p>
-              <p className="mt-1 text-leela-slate-light">capture de RDV automatisée</p>
-            </div>
-            <ul className="space-y-4">
-              {rdvFeatures.map((feature, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <feature.icon className="mt-1 h-5 w-5 flex-shrink-0 text-white/60" />
-                  <span className="text-leela-slate-light">{feature.text}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
         </div>
       </div>
     </motion.section>
