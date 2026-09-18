@@ -5,14 +5,14 @@ import VisualProof from './VisualProof'
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen flex-col justify-center bg-leela-white pb-8 pt-24">
-      <div className="mx-auto w-full max-w-5xl px-6 text-center">
+    <section className="flex min-h-screen flex-col justify-center bg-leela-white pb-6 pt-24">
+      <div className="mx-auto w-full max-w-7xl px-6 text-center">
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-4 text-3xl font-bold leading-tight tracking-tight text-leela-dark-blue md:text-5xl"
+          className="mb-4 text-3xl font-bold leading-tight tracking-tight text-leela-dark-blue md:text-6xl"
         >
           On remplit{' '}
           <span className="bg-gradient-to-r from-leela-dark-blue to-leela-slate bg-clip-text text-transparent">
@@ -25,11 +25,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mx-auto mb-5 max-w-3xl text-base leading-relaxed text-leela-slate md:text-lg"
+          className="mx-auto mb-5 max-w-4xl text-base leading-relaxed text-leela-slate md:text-xl"
         >
           <span className="block">
             De la création de contenu{' '}
-            <span className="text-sm text-leela-slate/60 md:text-base">(SEO + Réseaux Sociaux)</span>{' '}
+            <span className="text-sm text-leela-slate/60 md:text-lg">(SEO + Réseaux Sociaux)</span>{' '}
             jusqu'à la prise de RDV
           </span>
           <span className="block">pour votre TPE/PME.</span>
@@ -48,8 +48,8 @@ export default function Hero() {
         {/* Preuve visuelle assemblée, sous les textes */}
         {/* NOTE DEV: wrapper à hauteur compensée + scale CSS : l'assemblage des mockups
             reste strictement identique, seule l'échelle change pour tenir above the fold. */}
-        <div className="mx-auto mt-6 h-[266px] w-full max-w-3xl md:mt-8 md:h-[336px]">
-          <div className="origin-top scale-[0.7] md:scale-[0.8]">
+        <div className="mx-auto mt-6 h-[266px] w-full max-w-3xl md:mt-8 md:h-[320px]">
+          <div className="origin-top scale-[0.7] md:scale-[0.76]">
             <VisualProof />
           </div>
         </div>
