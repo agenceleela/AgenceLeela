@@ -14,13 +14,14 @@ import {
 
 // NOTE DEV: mockups 100% CSS/SVG (aucune image lourde) pour un chargement rapide (exigence tuto).
 // Micro-copy réel cadré "exemple" (pas de lorem ipsum, pas de barres grises, pas de contenu trompeur).
+// NOTE DEV: légende texte supprimée (décision utilisateur) ; le composant ne rend que l'assemblage.
 export default function VisualProof() {
   return (
     <motion.div
       initial="hidden"
       animate="visible"
       variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-      className="relative mx-auto w-full max-w-md lg:max-w-none"
+      className="relative mx-auto w-full"
     >
       <div className="relative h-[380px] md:h-[420px]">
         {/* Mockup site web */}
@@ -166,10 +167,6 @@ export default function VisualProof() {
           </div>
         </motion.div>
       </div>
-
-      <p className="mt-6 text-center text-sm text-leela-slate">
-        Voici ce qu'on a déjà préparé pour vous. Votre propre version sera révélée lors de l'appel.
-      </p>
     </motion.div>
   )
 }
