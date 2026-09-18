@@ -16,8 +16,10 @@ import {
 
 // NOTE DEV: section porte la transition dynamique clair → sombre (scroll-liée),
 // car elle est la première section sombre après le Hero.
-// Plages resserrées ([0, 0.45] fond / [0.1, 0.4] textes) : la section est plus haute
-// (cartes de valeur), le fond doit être sombre dès l'entrée des cartes.
+// Plages resserrées ([0, 0.45] fond / [0.1, 0.4] textes) : le fond doit être sombre
+// dès l'entrée des cartes.
+// NOTE DEV: bullets réduits à l'essentiel (razor tuto : couper tout ce qui ne
+// convertit pas) ; la carte 3 porte la promesse de résultat (RDV).
 const fronts = [
   {
     icon: Search,
@@ -26,8 +28,6 @@ const fronts = [
     features: [
       { icon: Globe, text: 'Site web optimisé pour la conversion (pas juste pour être "joli").' },
       { icon: FileText, text: '30 articles SEO / mois pour dominer votre niche locale.', bold: true },
-      { icon: Search, text: 'Refonte et optimisation complète de votre Google Business Profile.' },
-      { icon: MessageSquare, text: "Système automatisé de génération d'avis clients." },
     ],
     color: 'from-blue-500 to-cyan-400',
   },
@@ -38,8 +38,6 @@ const fronts = [
     features: [
       { icon: Video, text: '30 vidéos verticales (Shorts/Reels/TikTok) / mois, scriptées et montées.', bold: true },
       { icon: MessageSquare, text: 'Système de capture par mot-clé en commentaire (DM instantané).' },
-      { icon: Calendar, text: 'Guide pratique exclusif livré automatiquement sur WhatsApp.' },
-      { icon: Globe, text: 'Landing page dédiée pour transformer les curieux en rendez-vous.' },
     ],
     color: 'from-purple-500 to-pink-400',
   },
@@ -139,17 +137,6 @@ export default function SocialProof() {
             </ul>
           </motion.div>
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          style={{ color: titleColor }}
-          className="mt-10 text-center text-sm"
-        >
-          3 places d'études de cas fondatrices ouvertes ce mois-ci.
-        </motion.p>
       </div>
     </motion.section>
   )
